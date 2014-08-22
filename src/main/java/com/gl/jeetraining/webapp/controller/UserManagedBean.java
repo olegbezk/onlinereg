@@ -176,7 +176,7 @@ public class UserManagedBean implements Serializable {
 
 			Role role = user.getRole();
 			if (role == null) {
-				return "W/O Role";
+				return "W/O role";
 			}
 			return role.getDescription();
 
