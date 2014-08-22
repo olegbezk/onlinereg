@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Welcome to jsf-spring-hibernate</title>
+</h:head>
+<H1>Register Page</H1>
+<h:form>
+	<table>
+		<tr>
+			<td><h:outputLabel for="name" value="Name : " /></td>
+			<td><h:inputText id="name" value="#{userBean.name}">
+					<!-- f:validateLength minimum="5" /-->
+					<f:ajax event="blur" update="nameMsg" />
+				</h:inputText> <h:message id="nameMsg" for="name" display="icon" /></td>
+		</tr>
+		<tr>
+			<td><h:outputLabel for="surname" value="Surname : " /></td>
+			<td><h:inputText id="surname" value="#{userBean.surname}">
+					<!-- f:validateLength minimum="5" /-->
+					<f:ajax event="blur" update="surnameMsg" />
+				</h:inputText> <h:message id="surnameMsg" for="surname" display="icon" /></td>
+		</tr>
+		<tr>
+			<td><h:outputLabel for="email" value="EMail : " /></td>
+			<td><h:inputText id="email" value="#{userBean.email}">
+					<!-- f:validateLength minimum="5" /-->
+					<f:ajax event="blur" update="emailMsg" />
+				</h:inputText> <h:message id="emailMsg" for="email" display="icon" /></td>
+		</tr>
+		<tr>
+			<td><h:outputLabel for="login" value="Login : " /></td>
+			<td><h:inputText id="login" value="#{userBean.login}">
+					<!-- f:validateLength minimum="5" /-->
+					<f:ajax event="blur" update="loginMsg" />
+				</h:inputText> <h:message id="loginMsg" for="login" display="icon" /></td>
+		</tr>
+		<tr>
+			<td><h:outputLabel for="password" value="Password : " /></td>
+			<td><h:inputText id="password" value="#{userBean.password}">
+					<!-- f:validateLength minimum="5" /-->
+					<f:ajax event="blur" update="passwordMsg" />
+				</h:inputText> <h:message id="passwordMsg" for="password" display="icon" /></td>
+		</tr>
+		<tr>
+			<td><h:outputLabel for="hobbie" value="Hobbie : " /></td>
+			<td><h:inputText id="hobbie" value="#{userBean.hobbie}">
+					<!-- f:validateLength minimum="5" /-->
+					<f:ajax event="blur" update="hobbieMsg" />
+				</h:inputText> <h:message id="hobbieMsg" for="hobbie" display="icon" /></td>
+		</tr>
+		<tr>
+			<td><h:outputLabel for="note" value="Note : " /></td>
+			<td><h:inputText id="note" value="#{userBean.note}">
+					<!-- f:validateLength minimum="5" /-->
+					<f:ajax event="blur" update="noteMsg" />
+				</h:inputText> <h:message id="noteMsg" for="note" display="icon" /></td>
+		</tr>
+		<tr>
+			<td><h:commandButton id="addUser" value="Submit"
+					action="#{userBean.addUser}" ajax="false" /></td>
+					<td><h:commandButton action="index" value="Home" ajax="false" /></td>
+		</tr>
+	</table>
+</h:form>
+</html>

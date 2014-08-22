@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Welcome to JSF_Spring_Hibernate Project</title>
+</h:head>
+<H1>Welcome Page</H1>
+<h:body>
+	<h:form>
+		<table>
+			<tr>
+				<td><h:outputLabel for="login" value="Login : " /></td>
+				<td><h:inputText id="login" value="#{userBean.login}">
+						<!-- f:validateLength minimum="5" /-->
+						<f:ajax event="blur" update="loginMsg" />
+					</h:inputText> <h:message id="loginMsg" for="login" display="icon" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="password" value="Password : " /></td>
+				<td><h:inputSecret  id="password" value="#{userBean.password}">
+						<!-- f:validateLength minimum="5" /-->
+						<f:ajax event="blur" update="passwordMsg" />
+					</h:inputSecret> <h:message id="passwordMsg" for="password" display="icon" /></td>
+			</tr>
+			<tr>
+				<td><h:commandButton action="register" value="Register"
+						ajax="false" /></td>
+				<td><h:commandButton id="loginUser" value="Login"
+						action="#{userBean.login}" ajax="false" /></td>
+				<td><h:commandButton id="reset" value="Reset"
+						action="#{userBean.reset}" ajax="false" /></td>
+			</tr>
+		</table>
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Welcome to JSF_Spring_Hibernate Project</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:outputText value="USERs : "></h:outputText>
+		<h:dataTable id="users" var="user" value="#{userBean.userList}"
+			style="width: 10%">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="ID" />
+				</f:facet>
+				<h:outputText value="#{user.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Name" />
+				</f:facet>
+				<h:outputText value="#{user.name}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Surname" />
+				</f:facet>
+				<h:outputText value="#{user.surname}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="EMail" />
+				</f:facet>
+				<h:outputText value="#{user.email}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Login" />
+				</f:facet>
+				<h:outputText value="#{user.login}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Password" />
+				</f:facet>
+				<h:outputText value="#{user.password}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Delete</f:facet>
+				<h:commandButton id="deleteUser" value="Delete"
+					action="#{userBean.deleteUser(user)}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Set Role" />
+				</f:facet>
+				<h:selectOneMenu value="#{userBean.roleId}">
+					<f:selectItems value="#{userBean.roleList}" var="role"
+						itemValue="#{role.id}" itemLabel="#{role.description}" />
+				</h:selectOneMenu>
+				<h:commandButton value="Submit" action="#{userBean.updateRole(user)}" ajax="false" />
+			</h:column>
+		</h:dataTable>
+		<td><h:commandButton action="index" value="Home" ajax="false" /></td>
+	</h:form>
+</h:body>
+
+</html>
