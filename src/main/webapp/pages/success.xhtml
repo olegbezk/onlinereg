@@ -60,6 +60,12 @@
 				</h:selectOneMenu>
 				<h:commandButton value="Submit" action="#{userBean.updateRole(user)}" ajax="false" />
 			</h:column>
+			<h:column>
+			<f:facet name="header">
+					<h:outputText value="User Role" />
+				</f:facet>
+				<h:outputText value="#{userBean.getRole(user)}" />
+			</h:column>
 		</h:dataTable>
 		<td><h:commandButton action="index" value="Home" ajax="false" /></td>
 	</h:form>

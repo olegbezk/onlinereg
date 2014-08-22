@@ -36,7 +36,7 @@ public class UserManagedBean implements Serializable {
 	// @ManagedProperty(value = "#{UserService}")
 	@Autowired
 	private IUserService userService;
-	
+
 	@Autowired
 	private IRoleService roleService;
 
@@ -100,7 +100,7 @@ public class UserManagedBean implements Serializable {
 				user.setNote(getNote());
 				userService.addUser(user);
 				return REGSUCCESS;
-		}
+			}
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}
@@ -136,8 +136,8 @@ public class UserManagedBean implements Serializable {
 	public String getDescription() {
 		return description;
 	}
-	
-    public void setDescription(String description) {
+
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
@@ -165,10 +165,26 @@ public class UserManagedBean implements Serializable {
 		return role;
 	}
 
-	public String getRole(Role role) {
+	public String getRoleCurrentUser(Role role) {
 		User user = userService.getUserByRegInf(login, password);
 		role = user.getRole();
 		return role.getDescription();
+	}
+
+	public String getRole(User user) {
+		try {
+
+			Role role = user.getRole();
+			if (role == null) {
+				return "W/O Role";
+			}
+			return role.getDescription();
+
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+
+		return ERROR;
 	}
 
 	public void reset() {
@@ -183,17 +199,18 @@ public class UserManagedBean implements Serializable {
 		}
 		return userList;
 	}
-	
+
 	public String updateRole(User user) {
 		try {
-			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! " + roleId);
+			// System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! " +
+			// roleId);
 			Role userRole = roleService.getRole(roleId);
-		    user.setRole(userRole);
+			user.setRole(userRole);
 
-		    userService.updateUser(user);
-			
-		    return SUCCESS;
-			
+			userService.updateUser(user);
+
+			return SUCCESS;
+
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}
