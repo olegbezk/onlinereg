@@ -1,5 +1,7 @@
 package com.gl.jeetraining.webapp.dao;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 /**
  *  data access object for
@@ -21,7 +23,7 @@ public class ChatDAO implements IChatDAO {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public Chat getChats(int id) {
+	public Chat getChat(int id) {
 		Chat chat = (Chat) getSessionFactory().getCurrentSession().get(
 				Chat.class, id);
 		return chat;
@@ -35,5 +37,12 @@ public class ChatDAO implements IChatDAO {
 	public void addChat(Chat chat) {
 		getSessionFactory().getCurrentSession().persist(chat);
 		
+	}
+
+	@Override
+	public List<Chat> getChats() {
+		List list = getSessionFactory().getCurrentSession()
+				.createQuery("from Chat").list();
+		return list;
 	}
 }

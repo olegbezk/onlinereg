@@ -1,5 +1,7 @@
 package com.gl.jeetraining.webapp.dao;
 
+import java.util.List;
+
 import com.gl.jeetraining.webapp.model.Chat;
 
 public interface IChatDAO {
@@ -8,6 +10,8 @@ public interface IChatDAO {
 	
 	public void deletChat(Chat chat);
 	
-	public Chat getChats(int id);
+	public Chat getChat(int id);
+	
+	public List<Chat> getChats();
 
 }

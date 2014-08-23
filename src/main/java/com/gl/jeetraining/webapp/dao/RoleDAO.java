@@ -22,12 +22,6 @@ public class RoleDAO implements IRoleDAO {
 		this.sessionFactory = sessionFactory;
 	}
 
-	
-
-	
-
-	
-
 	public List<Role> getRoles() {
 		List list = getSessionFactory().getCurrentSession()
 				.createQuery("from Role").list();
@@ -36,12 +30,12 @@ public class RoleDAO implements IRoleDAO {
 
 	public void addRole(Role role) {
 		getSessionFactory().getCurrentSession().persist(role);
-		
+
 	}
 
 	public void delete(Role role) {
 		getSessionFactory().getCurrentSession().delete(role);
-		
+
 	}
 
 	public Role getRole(int id) {
