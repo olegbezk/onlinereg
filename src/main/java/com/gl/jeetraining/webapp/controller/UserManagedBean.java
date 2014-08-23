@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.gl.jeetraining.webapp.model.Role;
 import com.gl.jeetraining.webapp.model.User;
+import com.gl.jeetraining.webapp.service.IChatService;
 import com.gl.jeetraining.webapp.service.IRoleService;
 import com.gl.jeetraining.webapp.service.IUserService;
 
@@ -39,6 +40,9 @@ public class UserManagedBean implements Serializable {
 
 	@Autowired
 	private IRoleService roleService;
+	
+	@Autowired
+	private IChatService chatService;
 
 	List<User> userList;
 
@@ -202,8 +206,7 @@ public class UserManagedBean implements Serializable {
 
 	public String updateRole(User user) {
 		try {
-			// System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! " +
-			// roleId);
+
 			Role userRole = roleService.getRole(roleId);
 			user.setRole(userRole);
 
