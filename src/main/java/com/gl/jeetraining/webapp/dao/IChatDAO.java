@@ -8,10 +8,14 @@ public interface IChatDAO {
 	
 	public void addChat(Chat chat);
 	
-	public void deletChat(Chat chat);
+	public void deleteChat(Chat chat);
+	
+	public void updateChat(Chat chat);
 	
 	public Chat getChat(int id);
 	
 	public List<Chat> getChats();
+	
+	
 
 }

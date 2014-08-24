@@ -29,14 +29,14 @@ public class ChatDAO implements IChatDAO {
 		return chat;
 	}
 
-	public void deletChat(Chat chat) {
+	public void deleteChat(Chat chat) {
 		getSessionFactory().getCurrentSession().delete(chat);
 
 	}
 
 	public void addChat(Chat chat) {
 		getSessionFactory().getCurrentSession().persist(chat);
-		
+
 	}
 
 	@Override
@@ -44,5 +44,11 @@ public class ChatDAO implements IChatDAO {
 		List list = getSessionFactory().getCurrentSession()
 				.createQuery("from Chat").list();
 		return list;
+	}
+
+	@Override
+	public void updateChat(Chat chat) {
+		getSessionFactory().getCurrentSession().update(chat);
+
 	}
 }

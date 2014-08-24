@@ -27,13 +27,32 @@ public class ChatService implements IChatService {
 	}
 
 	@Override
-	public Chat getChat(int id) {
-		return chatDAO.getChat(id);
+	public void getChat(int id) {
+		chatDAO.getChat(id);
 	}
 
 	@Override
 	public List<Chat> getChats() {
 		return getChatDAO().getChats();
+	}
+
+	@Override
+	@Transactional(readOnly = false)
+	public void addChat(Chat chat) {
+		getChatDAO().addChat(chat);
+	}
+
+	@Override
+	@Transactional(readOnly = false)
+	public void deleteChat(Chat chat) {
+		getChatDAO().deleteChat(chat);
+	}
+
+	@Override
+	@Transactional(readOnly = false)
+	public void updateChat(Chat chat) {
+		getChatDAO().updateChat(chat);
+		
 	}
 
 }

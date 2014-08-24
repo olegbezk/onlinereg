@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 
+import com.gl.jeetraining.webapp.model.Chat;
 import com.gl.jeetraining.webapp.model.Role;
 import com.gl.jeetraining.webapp.model.User;
 import com.gl.jeetraining.webapp.service.IChatService;
@@ -40,13 +41,15 @@ public class UserManagedBean implements Serializable {
 
 	@Autowired
 	private IRoleService roleService;
-	
+
 	@Autowired
 	private IChatService chatService;
 
 	List<User> userList;
 
 	List<Role> roleList;
+
+	List<Chat> chatList;
 
 	private int id;
 
@@ -135,6 +138,20 @@ public class UserManagedBean implements Serializable {
 
 	public void setRoleList(List<Role> roleList) {
 		this.roleList = roleList;
+	}
+
+	public List<Chat> getChatList() {
+		chatList = new ArrayList<Chat>();
+		chatList.addAll(getChatService().getChats());
+		return chatList;
+	}
+
+	public IChatService getChatService() {
+		return chatService;
+	}
+
+	public void setChatService(IChatService chatService) {
+		this.chatService = chatService;
 	}
 
 	public String getDescription() {

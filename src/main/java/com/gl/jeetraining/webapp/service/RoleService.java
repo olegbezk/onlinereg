@@ -13,20 +13,17 @@ import com.gl.jeetraining.webapp.model.Role;
 @Service
 @Scope("request")
 @Transactional(readOnly = true)
-public class RoleService implements IRoleService{
-	
+public class RoleService implements IRoleService {
+
 	@Autowired
-    private IRoleDAO roleDAO;
+	private IRoleDAO roleDAO;
 
 	public Role getRole(int id) {
 		return roleDAO.getRole(id);
 	}
 
 	public List<Role> getRoles() {
-		// TODO Auto-generated method stub
-		return null;
+		return roleDAO.getRoles();
 	}
-
-
 
 }
